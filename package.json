@@ -1,0 +1,22 @@
+{
+  "name": "controller",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "needle": "^3.2.0",
+    "node-fetch": "^2.7.0",
+    "nodemon": "^3.0.1",
+    "request": "^2.88.2",
+    "superagent": "^8.1.2",
+    "xhr2": "^0.2.1"
+  }
+}

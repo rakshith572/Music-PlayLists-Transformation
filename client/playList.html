@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://bootswatch.com/4/cyborg/bootstrap.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <main class="container">
+        <button type="text" class="playList_link" ">click here to view playLists</button>
+        <ul class="list-group" id="results">
+        </ul>
+      </main>
+</body>
+<script >
+    const playList_link = document.querySelector('.playList_link');
+    const historyHTML = document.querySelector('.history');
+    const resultsList = document.querySelector('#results')
+
+    playList_link.addEventListener('click',()=>{
+        getPlayLists().then(showPlayLists);
+    });
+    const getPlayLists=()=>{
+        return fetch(`/spotify/playlists`).then(res=>res.json());
+    }
+
+    function showPlayLists(response) {
+        const results = response.items;
+        console.log(results);
+        resultsList.innerHTML=``;
+        results.forEach(playList => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.textContent = playList.name;
+        a.href = '/spotify/playlist/songs?id=' + playList.id+'&name='+playList.name;
+        li.appendChild(a);
+        resultsList.appendChild(li);
+        const br=document.createElement('br');
+        resultsList.appendChild(br);
+        });
+    }
+</script>
+</html>
